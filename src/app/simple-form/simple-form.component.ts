@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
+//  encapsulation: ViewEncapsulation.Native, //allows you to ignore global styles
   selector: 'app-simple-form',
   template: `
     <p>
@@ -14,7 +15,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
         (mouseup)="isMouseDown = false"
         (mouseleave)="isMouseDown = false"
       >
-      <button (click)="onClick($event, myInput)">Click me!</button>
+      <button 
+        class="white bg-black code"
+        (click)="onClick($event, myInput)"
+      >
+      Click me!
+      </button>
       <button (click)="update.emit({text:message})"> Emit Event!</button>
     </p>
   `,
