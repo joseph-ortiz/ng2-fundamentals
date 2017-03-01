@@ -1,7 +1,13 @@
 <h1>
   {{title}}
 </h1>
-<app-simple-form></app-simple-form>
-{{mail.message}}
+
 <h2>API</h2>
 {{api}}
+
+<h2>Looping with ngFor</h2>
+<app-simple-form 
+  *ngFor="let m of mail.messages"
+  [message]="m"
+>
+</app-simple-form>
