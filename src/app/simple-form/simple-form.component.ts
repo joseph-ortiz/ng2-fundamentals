@@ -6,15 +6,16 @@ import { Component, OnInit } from '@angular/core';
     <p>
       simple-form Works!
       <input #myInput type="text">
-      <button (click)="onClick(myInput)">Click me!</button>
+      <button (click)="onClick($event, myInput)">Click me!</button>
     </p>
   `,
   styles: []
 })
 export class SimpleFormComponent implements OnInit {
 
-  onClick(value){
+  onClick(event, value){
     console.log('clicked', value);
+    console.log('Event', event);
   }
   constructor() { }
 
