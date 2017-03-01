@@ -5,14 +5,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <p>
       {{message}}
-      <input #myInput type="text" [(ngModel)]="message">
+      <input 
+        #myInput 
+        type="text" 
+        [(ngModel)]="message"
+        [ngClass]="{mousedown: isMouseDown}"
+        (mousedown)="isMouseDown = true"
+        (mouseup)="isMouseDown = false"
+        (mouseleave)="isMouseDown = false"
+      >
       <button (click)="onClick($event, myInput)">Click me!</button>
       <button (click)="update.emit({text:message})"> Emit Event!</button>
     </p>
   `,
   styles: [`
     * {
-      border: 1px solid red;
+      font-family: comic sans;
     }
     input:focus{
       font-weight: bold;
@@ -21,9 +29,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     button{
       border: none;
     }
+    .mousedown{
+      border: 2px solid green;
+    }
   `]
 })
 export class SimpleFormComponent implements OnInit {
+
+  isMouseDown;
 
   @Input() message;
 
