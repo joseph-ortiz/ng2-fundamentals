@@ -5,9 +5,21 @@
 <h2>API</h2>
 {{api}}
 
+
+
 <h2>Looping with ngFor</h2>
+<ul>
+  <li *ngFor="let m of mail.messages">
+    {{m.text}}
+  </li>
+</ul>
+
+<hr>
+
 <app-simple-form 
   *ngFor="let m of mail.messages"
-  [message]="m"
+  [message]="m.text"
+  (update)="onUpdate(m.id, $event.text)"
 >
 </app-simple-form>
+
